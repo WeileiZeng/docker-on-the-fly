@@ -11,10 +11,12 @@ RUN apt-get install -y --force-yes \
     libitpp-dev \
     libeigen3-dev
 
-RUN apt-get install -y --force-yes make emacs
+RUN apt-get install -y --force-yes make
 
-#use volume instead
-#COPY ./sample /root/sample
+RUN apt-get install -y --force-yes emacs tmux
+
+#one can use volume instead
+COPY ./sample /root/sample
 
 WORKDIR /root
 
