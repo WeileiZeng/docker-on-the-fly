@@ -8,3 +8,6 @@ test:
 	docker run --rm -i --user=1001 --net=none -v "${PWD}":/data blang/latex:ubuntu pdflatex hello.tex
 
 
+clean:
+	rm hello.aux hello.log hello.pdf
+	rm *~
