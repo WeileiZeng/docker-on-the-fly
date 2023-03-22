@@ -1,8 +1,10 @@
 # https://github.com/blang/latex-docker/blob/master/latexdockercmd.sh
 
 run:
-	docker run --rm -i --user=${UID} --net=none -v "$PWD":/data blang/latex:ubuntu
-#	docker run --rm -i --user="$(id -u):$(id -g)" --net=none -v "$PWD":/data blang/latex:ubuntu
+#echo ${UID}
+	docker run --rm -i --user=1001 --net=none -v "${PWD}":/data blang/latex:ubuntu /bin/bash
 
 test:
-	echo $
+	docker run --rm -i --user=1001 --net=none -v "${PWD}":/data blang/latex:ubuntu pdflatex hello.tex
+
+
