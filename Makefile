@@ -27,3 +27,9 @@ nvidia-smi:
 	docker run --gpus=all --rm nricklin/ubuntu-gpu-test nvidia-smi
 # some how the official image nvidia/cuda is not working, use  nricklin/ubuntu-gpu-test instead
 #	docker run --rm --gpus all nvidia/cuda nvidia-smi
+
+jupyter:
+	docker run -it --rm --user 1001 --group-add users -p 80:8888 -v "${PWD}":/home/jovyan/work jupyter/datascience-notebook:85f615d5cafa
+
+#1001 is the user id, change with `echo $UID`
+#visit <ip> directly when use port 80; one can also use 4000,4001,...
