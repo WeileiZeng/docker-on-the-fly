@@ -1,0 +1,3 @@
+[submodule "linpack/linpack"]
+	path = linpack/linpack
+	url = git@github.com:ereyes01/linpack.git
