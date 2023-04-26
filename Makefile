@@ -33,3 +33,11 @@ jupyter:
 
 #1001 is the user id, change with `echo $UID`
 #visit <ip> directly when use port 80; one can also use 4000,4001,...
+
+
+python3:#with git installed
+	docker run -it --rm --network host python:3.9.16 bash
+
+# cmd to use sustech mirror for pip
+#pip install --upgrade pip --index-url https://mirrors.sustech.edu.cn/pypi/simple
+#pip config set global.index-url https://mirrors.sustech.edu.cn/pypi/simple
