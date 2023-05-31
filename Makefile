@@ -41,3 +41,9 @@ python3:#with git installed
 # cmd to use sustech mirror for pip
 #pip install --upgrade pip --index-url https://mirrors.sustech.edu.cn/pypi/simple
 #pip config set global.index-url https://mirrors.sustech.edu.cn/pypi/simple
+
+
+google-mirror:
+	docker run -p 4000:80 bohan/onemirror
+#mirror site for google search
+#this has been ran on cherenkov: http://cherenkov.dyn.ucr.edu:4000/
