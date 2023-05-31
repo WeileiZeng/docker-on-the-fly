@@ -47,3 +47,5 @@ google-mirror:
 	docker run -p 4000:80 bohan/onemirror
 #mirror site for google search
 #this has been ran on cherenkov: http://cherenkov.dyn.ucr.edu:4000/
+# see https://www.22vd.com/79328.html
+# see https://github.com/bohanyang/onemirror
