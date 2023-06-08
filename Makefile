@@ -28,19 +28,35 @@ nvidia-smi:
 # some how the official image nvidia/cuda is not working, use  nricklin/ubuntu-gpu-test instead
 #	docker run --rm --gpus all nvidia/cuda nvidia-smi
 
+
+
+### python related
+#3.10
+#VERSION=jupyter/datascience-notebook:85f615d5cafa
+VERSION=jupyter/datascience-notebook:python-3.9.13
+PORT=4002
 jupyter:
+        docker run --gpus all -it --rm --user 1001 --group-add users -p $(PORT):8888 -e JUPYTER_TOKEN=passwd -v "${PWD}":/home/jovyan/work $(VERSION)
+
+jupyter-cpu:
 	docker run -it --rm --user 1001 --group-add users -p 80:8888 -v "${PWD}":/home/jovyan/work jupyter/datascience-notebook:85f615d5cafa
 
 #1001 is the user id, change with `echo $UID`
 #visit <ip> directly when use port 80; one can also use 4000,4001,...
 
+PORT=4002
+jupyter-GPU-pytorch:
+        docker run --gpus all -it --rm --user 1001 --group-add users -p $PORT:8888 -v "${PWD}":/home/jovyan/work pytorch/pytorch:2.0.0-cuda11.\
+7-cudnn8-runtime
+
 
 python3:#with git installed
 	docker run -it --rm --network host python:3.9.16 bash
 
-# cmd to use sustech mirror for pip
-#pip install --upgrade pip --index-url https://mirrors.sustech.edu.cn/pypi/simple
-#pip config set global.index-url https://mirrors.sustech.edu.cn/pypi/simple
+# cmd to use sustech mirror for pip. run both cmd!
+pip-mirror:
+        pip install --upgrade pip --index-url https://mirrors.sustech.edu.cn/pypi/simple
+        pip config set global.index-url https://mirrors.sustech.edu.cn/pypi/simple
 
 
 google-mirror:
