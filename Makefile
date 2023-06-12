@@ -34,9 +34,10 @@ nvidia-smi:
 #3.10
 #VERSION=jupyter/datascience-notebook:85f615d5cafa
 VERSION=jupyter/datascience-notebook:python-3.9.13
-PORT=4002
+PORT=4000
 jupyter:
-        docker run --gpus all -it --rm --user 1001 --group-add users -p $(PORT):8888 -e JUPYTER_TOKEN=passwd -v "${PWD}":/home/jovyan/work $(VERSION)
+	docker run --gpus all -it --rm --user ${UID} --group-add users -p $(PORT):8888 -e JUPYTER_TOKEN=passwd -v "${PWD}":/home/jovyan/work $(VERSION)
+
 
 jupyter-cpu:
 	docker run -it --rm --user 1001 --group-add users -p 80:8888 -v "${PWD}":/home/jovyan/work jupyter/datascience-notebook:85f615d5cafa
@@ -44,10 +45,9 @@ jupyter-cpu:
 #1001 is the user id, change with `echo $UID`
 #visit <ip> directly when use port 80; one can also use 4000,4001,...
 
-PORT=4002
+#PORT=4002
 jupyter-GPU-pytorch:
-        docker run --gpus all -it --rm --user 1001 --group-add users -p $PORT:8888 -v "${PWD}":/home/jovyan/work pytorch/pytorch:2.0.0-cuda11.\
-7-cudnn8-runtime
+	docker run --gpus all -it --rm --user 1001 --group-add users -p $PORT:8888 -v "${PWD}":/home/jovyan/work pytorch/pytorch:2.0.0-cuda11.7-cudnn8-runtime
 
 
 python3:#with git installed
