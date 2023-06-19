@@ -38,3 +38,6 @@ test:
 # read more on https://docs.docker.com/engine/install/linux-postinstall/
 # on administrator side: `sudo usermod -aG docker $USER`
 # on user site: relogin or run `newgrp docker`
+
+check-occupied-ports:
+	docker ps
