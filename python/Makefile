@@ -36,3 +36,5 @@ test:
 	docker run hello-world
 # If one fail to run the above cmd and see `permission denied` error. You may run it with `sudo`, or add $USER to the `docker group`
 # read more on https://docs.docker.com/engine/install/linux-postinstall/
+# on administrator side: `sudo usermod -aG docker $USER`
+# on user site: relogin or run `newgrp docker`
