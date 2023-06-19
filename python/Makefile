@@ -14,10 +14,12 @@ jupyter:
 jupyter-gpu:
 	docker run --gpus all -it --rm --user `id -u` --group-add users -p $(PORT):8888 -e JUPYTER_TOKEN=passwd -v "${PWD}":/home/jovyan/work $(VERSION)
 
-IP=10.11.5.66
+
+
+IP=10.11.5.66 #change to your server IP
 help:
 	echo "make jupyter"
-	echo "then visit $(IP):$(PORT), use 'passwd' for token"
+	echo "then visit IP:PORT like $(IP):$(PORT), use 'passwd' for token"
 	echo "${PWD} will be mapped to work/"
 
 
@@ -29,3 +31,8 @@ pip-mirror:
         pip config set global.index-url https://mirrors.sustech.edu.cn/pypi/simple
 
 
+#hello world test
+test:
+	docker run hello-world
+# If one fail to run the above cmd and see `permission denied` error. You may run it with `sudo`, or add $USER to the `docker group`
+# read more on https://docs.docker.com/engine/install/linux-postinstall/
