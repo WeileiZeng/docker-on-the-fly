@@ -13,6 +13,13 @@ dockovpn:
 bash:
 	docker exec -it dockovpn bash
 
+# how to modify expiration time
+# docker compose exec dockovpn bash
+# bash-5.1# cd /opt/Dockovpn_data && EASYRSA_CRL_DAYS=3650 easyrsa gen-crl
+# cd /opt/Dockovpn
+# ./genclient.sh
+# copy client.ovpn
+
 # not in use
 ipsec:
 	docker run --name ipsec-vpn-server --env-file /data/jump/vpn/.env --restart=always -p 500:500/udp -p 4500:4500/udp -v /lib/modules:/lib/modules:ro -d --privileged registry.cn-hangzhou.aliyuncs.com/eryajf/ipsec-vpn-server
