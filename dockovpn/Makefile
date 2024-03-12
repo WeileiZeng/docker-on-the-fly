@@ -3,9 +3,14 @@
 dockovpn:
 	docker run -it --rm --cap-add=NET_ADMIN \
 -p 1194:1194/udp -p 80:4000/tcp \
+-p 3002:80 \ #for downloading cert file
+--skip \ #skip generating clients on first run. modify expiration duration first
 -v /home/weileizeng/working/docker/dockovpn/clients:/opt/Dockovpn_data/clients \
 -e HOST_ADDR=cherenkov.dyn.ucr.edu \
 --name dockovpn alekslitvinenk/openvpn
+
+#There's a possibility to persist generated files in volume storage. Run docker with
+#`-v openvpn_conf:/opt/Dockovpn_data`
 
 
 #-e HOST_ADDR=$(curl -s https://api.ipify.org) \
